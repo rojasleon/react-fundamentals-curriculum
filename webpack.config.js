@@ -7,7 +7,11 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 })
 
 const config = {
-  entry: './src/index.js',
+  entry: [
+    'babel-polyfill',
+    'whatwg-fetch',
+    './src/index.js',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -23,7 +27,7 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader'
         }
