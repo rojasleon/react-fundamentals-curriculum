@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import ForecastDetail from '../components/forecast-detail'
 
@@ -6,45 +7,43 @@ import { getData } from '../utils/api'
 import queryString from 'query-string'
 
 export default class Forecast extends Component {
+  static propTypes = {
+    location: PropTypes.object.isRequired
+  }
   state = {
     forecast: [],
-    country: '',
+    city: '',
     loading: true
   }
 
   async componentDidMount() {
     const { location: { search } } = this.props
-    const country = queryString.parse(search).city
-    const forecast = await getData(country);
-    this.setState(() => ({ forecast, loading: false, country }))
+    const city = queryString.parse(search).city
+    this.makeRequest(city)
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if(nextProps.location !== prevState.country) {
-      // country
-      const data = nextProps.location.search
-      const newCountry = queryString.parse(data).city
-      // forecast
-      setTimeout(async () => {
+  makeRequest = (city) => {
+    this.setState({loading: true}, async () => {
+      const forecast = await getData(city);
+      this.setState(() => ({ forecast, loading: false, city }))
+    })
+  }
 
-        const newForecast = await getData(newCountry)
-        return {
-          forecast: newForecast
-        }
-      }, 500)
-      return {
-        country: newCountry
-      }
+  componentWillReceiveProps(nextProps, prevState) {
+    if(nextProps.location !== prevState.city) {
+      const { location: { search } } = nextProps
+      const city = queryString.parse(search).city
+      this.makeRequest(city)
     }
-    return null
   }
+
   render() {
     console.log(this.state.forecast)
     return (
       <div>
         {this.state.loading === true
           ? <div>Loading...</div>
-          : <div>{this.state.country}</div>
+          : <div>{this.state.city}</div>
         }
       </div>
     )
