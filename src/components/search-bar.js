@@ -1,13 +1,17 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-const SearchBar = (props) => {
+const SearchBar = ({ getCity, value }) => {
   return (
     <div>
-      <input />
-      <Link>Go!</Link>
+      <input
+        type="text"
+        onChange={getCity}
+        value={value}
+      />
+      <Link to={`/forecast?city=${value}`}>Go!</Link>
     </div>
   )
 }
 
-export default SearchBar;
+export default SearchBar

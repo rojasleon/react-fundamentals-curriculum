@@ -6,23 +6,24 @@ import { getData } from '../utils/api'
 
 export default class Home extends Component {
   state = {
-    value: ''
+    city: ''
   }
 
-  handleChange = (e) => {
-    const value = e.target.value
-    this.setState(() => ({
-      value
-    }))
+  handleCity = (e) => {
+    const city = e.target.value
+    this.setState(() => ({ city }))
   }
 
   render() {
-    const { value } = this.state
+    const { city } = this.state
     return (
       <div>
         Home
         <form onSubmit={this.handleSubmit}>
-          <SearchBar />
+          <SearchBar
+            getCity={this.handleCity}
+            value={city}
+          />
         </form>
       </div>
     )
