@@ -11,4 +11,20 @@ body {
   padding: 10px;
   box-sizing: border-box;
   border-bottom: 4px solid #ccc;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.logo {
+  justify-self: start;
+  color: black;
+  text-decoration: none;
+}
+.search-bar {
+  justify-self: end;
+}
+.day-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr)
 }

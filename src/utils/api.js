@@ -1,9 +1,12 @@
 const BASE_URL = 'http://api.openweathermap.org/data/2.5'
-const API_KEY = '031391b74c5e96af5000cc553c1e766f'
-// /forecast?q=London,us&appid=
+const API_KEY = 'b714ec74bbab5650795063cb0fdf5fbe'
 
-export const getData = async (city) => {
-  const response = await fetch(`${BASE_URL}/forecast?q=${city}&appid=${API_KEY}`)
+// http://api.openweathermap.org/data/2.5/forecast/daily?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY&cnt=5
+
+// http://api.openweathermap.org/data/2.5/weather?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY
+
+export const getForecast = async (city) => {
+  const response = await fetch(`${BASE_URL}/forecast/daily?q=${city}&type=accurate&appid=${API_KEY}&cnt=5`)
   const data = await response.json()
   return data
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const SearchBar = ({ getCity, value }) => {
   return (
-    <div>
+    <div className="search-bar">
       <input
         type="text"
         onChange={getCity}

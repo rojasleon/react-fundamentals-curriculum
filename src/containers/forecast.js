@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import ForecastDetail from '../components/forecast-detail'
+import DayItem from '../components/day-item'
 
-import { getData } from '../utils/api'
+
+import { getForecast } from '../utils/api'
 import queryString from 'query-string'
 
 export default class Forecast extends Component {
@@ -24,7 +25,7 @@ export default class Forecast extends Component {
 
   makeRequest = (city) => {
     this.setState({loading: true}, async () => {
-      const forecast = await getData(city);
+      const forecast = await getForecast(city);
       this.setState(() => ({ forecast, loading: false, city }))
     })
   }
@@ -38,12 +39,20 @@ export default class Forecast extends Component {
   }
 
   render() {
-    console.log(this.state.forecast)
+    const { forecast } = this.state
+    console.log(forecast)
     return (
       <div>
         {this.state.loading === true
           ? <div>Loading...</div>
-          : <div>{this.state.city}</div>
+          : <div>
+              <h2>{this.state.city}</h2>
+              <div>
+                {forecast.list.map((item) => (
+                  <DayItem key={item.dt} {...item} />
+                ))}
+              </div>
+            </div>
         }
       </div>
     )
