@@ -40,7 +40,6 @@ export default class Forecast extends Component {
 
   render() {
     const { forecast } = this.state
-    console.log(forecast)
     return (
       <div>
         {this.state.loading === true

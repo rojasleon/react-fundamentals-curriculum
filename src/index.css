@@ -24,7 +24,3 @@ body {
 .search-bar {
   justify-self: end;
 }
-.day-item {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr)
-}
