@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 
+import SearchBar from '../components/search-bar'
+
 import { getData } from '../utils/api'
 
 export default class Home extends Component {
   state = {
     value: ''
-  }
-
-  handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const d = await getData(this.state.value)
-    console.log("Response " ,d)
   }
 
   handleChange = (e) => {
@@ -27,11 +22,7 @@ export default class Home extends Component {
       <div>
         Home
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={value}
-            onChange={this.handleChange}
-          />
+          <SearchBar />
         </form>
       </div>
     )

@@ -11,6 +11,7 @@ export default class App extends Component {
         <div>
           <NavBar />
             <Route exact path="/" component={Home} />
+            <Route path="/forecast" />
         </div>
       </Router>
     )
