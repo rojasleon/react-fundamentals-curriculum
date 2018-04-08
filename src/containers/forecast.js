@@ -20,15 +20,26 @@ export default class Forecast extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    if(nextProps.location !== prevState.country) {
+      // country
+      const data = nextProps.location.search
+      const newCountry = queryString.parse(data).city
+      // forecast
+      setTimeout(async () => {
 
-    let newCountry = nextProps.location.search
-    newCountry = queryString.parse(newCountry).city
-    return {
-      country: newCountry
+        const newForecast = await getData(newCountry)
+        return {
+          forecast: newForecast
+        }
+      }, 500)
+      return {
+        country: newCountry
+      }
     }
-    console.log(country)
+    return null
   }
   render() {
+    console.log(this.state.forecast)
     return (
       <div>
         {this.state.loading === true
