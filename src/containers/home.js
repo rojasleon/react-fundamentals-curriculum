@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import SearchBar from '../components/search-bar'
 
-import { getData } from '../utils/api'
-
 export default class Home extends Component {
   state = {
     city: ''

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+// class component
 import Home from './home'
 import Forecast from './forecast'
 import NoMatch from '../components/no-match'
 
+// stateless functional component
 import NavBar from '../components/nav-bar'
 
 export default class App extends Component {
