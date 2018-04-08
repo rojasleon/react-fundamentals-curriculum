@@ -17,12 +17,10 @@ export default class Home extends Component {
     return (
       <div>
         Home
-        <form onSubmit={this.handleSubmit}>
-          <SearchBar
-            getCity={this.handleCity}
-            value={city}
-          />
-        </form>
+        <SearchBar
+          getCity={this.handleCity}
+          value={city}
+        />
       </div>
     )
   }

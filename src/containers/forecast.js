@@ -8,6 +8,7 @@ import queryString from 'query-string'
 export default class Forecast extends Component {
   state = {
     forecast: [],
+    country: '',
     loading: true
   }
 
@@ -15,15 +16,24 @@ export default class Forecast extends Component {
     const { location: { search } } = this.props
     const country = queryString.parse(search).city
     const forecast = await getData(country);
-    this.setState(() => ({ forecast, loading: false }))
+    this.setState(() => ({ forecast, loading: false, country }))
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+
+    let newCountry = nextProps.location.search
+    newCountry = queryString.parse(newCountry).city
+    return {
+      country: newCountry
+    }
+    console.log(country)
   }
   render() {
-    console.log(this.state.forecast.city)
     return (
       <div>
         {this.state.loading === true
           ? <div>Loading...</div>
-          : <div>FORECAST</div>
+          : <div>{this.state.country}</div>
         }
       </div>
     )
