@@ -15,9 +15,9 @@ export default class Home extends Component {
   render() {
     const { city } = this.state
     return (
-      <div>
-        Home
+      <div className="home">
         <SearchBar
+          id="home"
           getCity={this.handleCity}
           value={city}
         />

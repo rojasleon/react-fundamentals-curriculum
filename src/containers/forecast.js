@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import DayItem from '../components/day-item'
 
-
 import { getForecast } from '../utils/api'
+
 import queryString from 'query-string'
 
 export default class Forecast extends Component {
@@ -24,6 +24,7 @@ export default class Forecast extends Component {
   }
 
   makeRequest = (city) => {
+    if(!city) return null
     this.setState({loading: true}, async () => {
       const forecast = await getForecast(city);
       this.setState(() => ({ forecast, loading: false, city }))
