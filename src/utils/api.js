@@ -1,9 +1,7 @@
 const BASE_URL = 'http://api.openweathermap.org/data/2.5'
 const API_KEY = 'b714ec74bbab5650795063cb0fdf5fbe'
 
-// http://api.openweathermap.org/data/2.5/forecast/daily?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY&cnt=5
 
-// http://api.openweathermap.org/data/2.5/weather?q=CITY-NAME&type=accurate&APPID=YOUR-API-KEY
 
 export const getForecast = async (city) => {
   const response = await fetch(`${BASE_URL}/forecast/daily?q=${city}&type=accurate&appid=${API_KEY}&cnt=5`)

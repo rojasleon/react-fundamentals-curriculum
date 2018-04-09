@@ -39,17 +39,25 @@ export default class Forecast extends Component {
     }
   }
 
+  handleClick = (city) => {
+    this.props.history.push({
+      pathname: `/details/${this.state.city}`,
+      state: city
+    })
+  }
+
   render() {
     const { forecast } = this.state
+    const { history } = this.props
     return (
       <div>
         {this.state.loading === true
-          ? <div>Loading...</div>
+          ? <div style={{ fontSize: '37px', textAlign: 'center' }}>Loading...</div>
           : <div>
-              <h2>{this.state.city}</h2>
-              <div>
+              <h2 style={{ textAlign: 'center', fontSize: '40px' }}>{this.state.city.toUpperCase()}</h2>
+              <div className="forecast">
                 {forecast.list.map((item) => (
-                  <DayItem key={item.dt} {...item} />
+                  <DayItem onClick={() => this.handleClick(item)} key={item.dt} {...item} {...history} />
                 ))}
               </div>
             </div>
