@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getDate } from '../utils/helpers'
+import image from '../images/weather-icons/01d.svg'
 
 export default class Detail extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class Detail extends Component {
     console.log(state)
     return (
       <div>
-        <img width="10%" src={`/src/images/weather-icons/${icon}.svg`} />
+        <img width="10%" src={image} />
         <h3>{date}</h3>
         <h3>{city.toUpperCase()}</h3>
         <h3>{weather}</h3>

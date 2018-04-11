@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: './src/index.html',
@@ -35,14 +36,34 @@ const config = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=.+)?$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]',
+        options: {
+          name: '[path][name].[ext]',
+            outputPath: 'images/'
+        }
+      },
     ]
   },
   devServer: {
     historyApiFallback: true
   },
   plugins: [
-    htmlWebpackPlugin
+    htmlWebpackPlugin,
   ]
 }
+
+if(process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new config.optimization.minimize()
+  )
+}
+
 module.exports = config
