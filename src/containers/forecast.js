@@ -14,7 +14,8 @@ export default class Forecast extends Component {
   state = {
     forecast: [],
     city: '',
-    loading: true
+    loading: true,
+    status: null
   }
 
   async componentDidMount() {
@@ -24,10 +25,16 @@ export default class Forecast extends Component {
   }
 
   makeRequest = (city) => {
-    if(!city) return null
+    if(!city) return;
     this.setState({loading: true}, async () => {
-      const { data } = await getForecast(city);
-      this.setState(() => ({ forecast: data, loading: false, city }))
+      const { data, status } = await getForecast(city);
+      if (status === 404) this.setState({
+        status: 404,
+        loading: false
+      });
+      else {
+        this.setState(() => ({ forecast: data, loading: false, city }))
+      }
     })
   }
 
@@ -51,16 +58,17 @@ export default class Forecast extends Component {
     const { history } = this.props
     return (
       <div>
-        {this.state.loading === true
-          ? <div style={{ fontSize: '37px', textAlign: 'center' }}>Loading...</div>
-          : <div>
-              <h2 style={{ textAlign: 'center', fontSize: '40px' }}>{this.state.city.toUpperCase()}</h2>
-              <div className="forecast">
-                {forecast.list.map((item) => (
-                  <DayItem onClick={() => this.handleClick(item)} key={item.dt} {...item} {...history} />
-                ))}
-              </div>
+        {this.state.loading && <div style={{ fontSize: '37px', textAlign: 'center' }}>Loading...</div>}
+        {!this.state.loading && this.state.status !== 404
+        ? <div>
+            <h2 style={{ textAlign: 'center', fontSize: '40px', color: 'rgb(156,169,191)' }}>{this.state.city.toUpperCase()}</h2>
+            <div className="forecast">
+              {forecast.list.map((item) => (
+                <DayItem onClick={() => this.handleClick(item)} key={item.dt} {...item} {...history} />
+              ))}
             </div>
+          </div>
+        : <div>ok</div>
         }
       </div>
     )
