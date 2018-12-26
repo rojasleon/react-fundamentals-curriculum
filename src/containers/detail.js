@@ -12,7 +12,6 @@ export default class Detail extends Component {
     const humidity = state.humidity
     const max = state.temp.max
     const min = state.temp.min
-    console.log(state)
     return (
       <div>
         <img width="10%" src={image} />

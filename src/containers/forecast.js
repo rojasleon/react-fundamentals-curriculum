@@ -68,7 +68,7 @@ export default class Forecast extends Component {
               ))}
             </div>
           </div>
-        : <div>ok</div>
+        : <div>Not found</div>
         }
       </div>
     )
