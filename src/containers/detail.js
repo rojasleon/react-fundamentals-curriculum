@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { getDate } from '../utils/helpers'
-import image from '../images/weather-icons/01d.svg'
 
 export default class Detail extends Component {
   render() {
@@ -14,7 +13,7 @@ export default class Detail extends Component {
     const min = state.temp.min
     return (
       <div>
-        <img width="10%" src={image} />
+        <img width="10%" src={`../src/images/weather-icons/${icon}.svg`} />
         <h3>{date}</h3>
         <h3>{city.toUpperCase()}</h3>
         <h3>{weather}</h3>
