@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
+require.context('../images', true, /\.svg$/);
 // class component
 import Home from './home'
 import Forecast from './forecast'
