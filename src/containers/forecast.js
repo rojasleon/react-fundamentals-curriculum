@@ -61,7 +61,7 @@ export default class Forecast extends Component {
         {this.state.loading && <div style={{ fontSize: '37px', textAlign: 'center' }}>Loading...</div>}
         {!this.state.loading && this.state.status !== 404
         ? <div>
-            <h2 style={{ textAlign: 'center', fontSize: '40px', color: 'rgb(156,169,191)' }}>{this.state.city.toUpperCase()}</h2>
+            <h2 style={{ textAlign: 'center', fontSize: '40px', color: '#F3518D' }}>{this.state.city.toUpperCase()}</h2>
             <div className="forecast">
               {forecast.list.map((item) => (
                 <DayItem onClick={() => this.handleClick(item)} key={item.dt} {...item} {...history} />

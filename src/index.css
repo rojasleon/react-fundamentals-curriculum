@@ -93,3 +93,11 @@ body {
 h2 {
   color: #000;
 }
+@media(max-width: 680px) {
+  .forecast {
+    flex-direction: column;
+  }
+  .forecast-items {
+    width: auto;
+  }
+}
