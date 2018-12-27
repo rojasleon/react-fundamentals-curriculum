@@ -12,8 +12,8 @@ export default class Detail extends Component {
     const max = state.temp.max
     const min = state.temp.min
     return (
-      <div>
-        <img width="10%" src={`../src/images/weather-icons/${icon}.svg`} />
+      <div className="card">
+        <img width="80%" src={`../src/images/weather-icons/${icon}.svg`} />
         <h3>{date}</h3>
         <h3>{city.toUpperCase()}</h3>
         <h3>{weather}</h3>

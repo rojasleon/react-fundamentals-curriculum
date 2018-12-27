@@ -93,6 +93,15 @@ body {
 h2 {
   color: #000;
 }
+.card {
+  border-radius: 6px;
+  background-color: white;
+  padding: 6px;
+  margin: 10px auto 0 auto;
+  width: 35%;
+  text-align: center;
+  border: 1px solid rgb(240,240,240);
+}
 @media(max-width: 680px) {
   .forecast {
     flex-direction: column;
