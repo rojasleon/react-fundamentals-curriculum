@@ -11,9 +11,10 @@ export default class Detail extends Component {
     const humidity = state.humidity
     const max = state.temp.max
     const min = state.temp.min
+    const IMAGE_URL = 'https://github.com/rojasleon/react-fundamentals-curriculum/blob/master/src/images/weather-icons'
     return (
       <div className="card">
-        <img width="40%" src={`../src/images/weather-icons/${icon}.jpg`} />
+        <img width="40%" src={`${IMAGE_URL}/${icon}.jpg?raw=true`} />
         <h3>{date}</h3>
         <h3>{city.toUpperCase()}</h3>
         <h3>{weather}</h3>
