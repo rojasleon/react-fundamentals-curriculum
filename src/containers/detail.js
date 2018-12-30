@@ -13,7 +13,7 @@ export default class Detail extends Component {
     const min = state.temp.min
     return (
       <div className="card">
-        <img width="80%" src={`../src/images/weather-icons/${icon}.svg`} />
+        <img width="40%" src={`../src/images/weather-icons/${icon}.jpg`} />
         <h3>{date}</h3>
         <h3>{city.toUpperCase()}</h3>
         <h3>{weather}</h3>

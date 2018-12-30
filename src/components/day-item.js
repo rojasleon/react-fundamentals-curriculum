@@ -7,7 +7,9 @@ export default function DayItem(props) {
   const icon = props.weather[0].icon;
   return (
     <div onClick={props.onClick} className="forecast-items">
-      <img style={{ width: '40%' }} src={`src/images/weather-icons/${icon}.svg`} />
+      <picture className="picture">
+        <img style={{ width: '50%' }} src={`src/images/weather-icons/${icon}.jpg`} />
+      </picture>
       <h2>{currenDate}</h2>
     </div>
   )

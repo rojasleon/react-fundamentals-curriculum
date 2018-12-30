@@ -90,6 +90,15 @@ body {
   cursor: pointer;
   transform: scale(1.1);
 }
+.picture {
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: white;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
 h2 {
   color: #000;
 }
