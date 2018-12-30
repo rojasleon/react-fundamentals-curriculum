@@ -14,10 +14,7 @@ const SearchBar = ({ getCity, value, id }) => {
         style={{ width: id === 'home' ? '100%' : '' }}
       />
       {value
-        ? <Link style={{
-        backgroundColor: id === 'home' ? '#000' : '',
-        marginTop: id === 'home' ? 10 : ''
-      }} className="button-submit" to={`/forecast?city=${value}`}>Go!</Link>
+        ? <Link className="button-submit" to={`/forecast?city=${value}`}>Go!</Link>
         : null
       }
     </div>
