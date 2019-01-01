@@ -16,6 +16,7 @@ export default class Home extends Component {
     const { city } = this.state
     return (
       <div className="home">
+        <h3 className="search">Search a country and city</h3>
         <SearchBar
           id="home"
           getCity={this.handleCity}

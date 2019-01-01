@@ -49,6 +49,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.search{
+  font-size: 60px;
+  margin-bottom: 80px;
 }
 .input {
   border: 1px solid rgb(220,220,220);
